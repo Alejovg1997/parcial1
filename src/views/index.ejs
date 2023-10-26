@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+</head>
+<body>
+    <h1>¡Hola <%= name %>, bienvenido a nuestra aplicación de mascotas!</h1>
+    <p>Estos son mis Estudiantes:</p>
+    <ul>
+        <% students.forEach(student => { %>
+            <li><%= student %></li>
+        <% }); %>
+    </ul>
+</body>
+</html>

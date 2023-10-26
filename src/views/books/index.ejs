@@ -1,0 +1,74 @@
+<%- include('../layouts/header',{title:'books list'}); -%>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="alert alert-success text-center"> books list</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">titulo</th>
+                    <th scope="col">autor</th>
+                    <th scope="col">año de publicaicon</th>
+                    <th scope="col">isbn</th>
+                    <th scope="col">idioma</th>
+                    <th scope="col">paginas</th>
+                    <th scope="col">precio</th>
+                    <th scope="col">disponibilidad</th>
+                    <th scope="col">              </th>
+                  </tr>
+                </thead>
+                <tbody>
+                    
+                        <% books.map(book => { %>
+                            <tr>
+<th scope="row"><%= book.id %></th>
+<td><%= book.title %></td>
+<td><%= book.author %></td>
+<td><%= book.publicationYear %></td>
+<td><%= book.isbn %></td>
+<td><%= book.language %></td>
+<td><%= book.pageCount %></td>
+<td><%= book.price %></td>
+<td><%= book.isAvailable %><%=book.disponibilidad === 'disponible' ? '🟢' : '🔴' %></td>
+<td><%= book.price %></td>
+<td>
+    <form action="/books/delete/<%=book.id%>" method="post" onsubmit="return confirm('Are you sure want to delete this book?')">
+    <button type="submit" class="btn btn-outline-danger">Delete</button>
+</form>
+</td>
+
+                            </tr>
+
+                       
+                        <% }); %>
+                    
+               
+                
+              </table>
+
+        </div>
+        <div class="row">
+            <div class="col-s12 d-grid">
+                <a class="btn btn-secundary" href="/books/create" role="button">Create new book</a>
+            </div>
+        </div>
+        <div class="row">
+            <h1>Listado de libros filtrados</h1>
+            <form action="/books" method="get">
+                <label for="author">Filtrar por autor:</label>
+                <input type="text" id="author" name="author">
+                <button type="submit">Filtrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('../layouts/footer'); -%>
+   
+
